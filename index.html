@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baby Badger — Coming Soon</title>
+  <meta name="description" content="Baby Badger merchandise is on its way. Sign up to be the first to know when the shop opens.">
+  <meta property="og:title" content="Baby Badger — Coming Soon">
+  <meta property="og:description" content="Baby Badger merchandise is on its way.">
+  <meta property="og:url" content="https://babybadger.shop/">
+  <meta property="og:image" content="https://babybadger.shop/images/baby-badger.webp">
+  <meta name="theme-color" content="#2b2622">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <img class="badger" src="images/baby-badger.webp" width="900" height="519" alt="Baby Badger resting its chin on its paws">
+
+    <p class="eyebrow">babybadger.shop</p>
+    <h1>Something little<br>is digging its way here.</h1>
+    <p class="lede">Baby Badger merch is almost ready. Leave your email and we'll let you know the moment the shop opens.</p>
+
+    <form class="signup" action="https://formspree.io/f/moejqggb" method="POST" id="signup">
+      <label for="email" class="sr-only">Email address</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="note" id="note" aria-live="polite"></p>
+  </main>
+
+  <footer>© <span id="year"></span> Baby Badger</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('signup');
+    form.addEventListener('submit', async (e) => {
+      const note = document.getElementById('note');
+      e.preventDefault();
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        note.textContent = res.ok ? "You're on the list! 🦡" : "Something went wrong — please try again.";
+        if (res.ok) form.reset();
+      } catch {
+        note.textContent = "Something went wrong — please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
