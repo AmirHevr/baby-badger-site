@@ -6,4 +6,4 @@ Static page (`index.html`, `styles.css`, `favicon.svg`) for https://babybadger.s
 
 - Preview locally: `python3 -m http.server` then open http://localhost:8000
 - Hosting: GitHub Pages (Settings → Pages → deploy from branch). `CNAME` is set to `babybadger.shop`.
-- Email sign-up: set the `<form>` `action` in `index.html` to your provider's endpoint (Formspree, Buttondown, etc.).
+- Email sign-up: posts to Formspree (`https://formspree.io/f/moejqggb`); sign-ups appear in the Formspree dashboard.
