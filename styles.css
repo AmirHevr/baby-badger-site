@@ -34,14 +34,16 @@ body {
 }
 
 .badger {
-  width: 180px;
+  width: min(380px, 90vw);
   height: auto;
-  animation: bob 3.2s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  animation: breathe 4s ease-in-out infinite;
 }
 
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* slow sleepy breathing */
+@keyframes breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.012, 1.03); }
 }
 
 .eyebrow {
