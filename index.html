@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baby Badger — Coming Soon</title>
+  <meta name="description" content="Baby Badger merchandise is on its way. Sign up to be the first to know when the shop opens.">
+  <meta property="og:title" content="Baby Badger — Coming Soon">
+  <meta property="og:description" content="Baby Badger merchandise is on its way.">
+  <meta property="og:url" content="https://babybadger.shop/">
+  <meta name="theme-color" content="#2b2622">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <svg class="badger" viewBox="0 0 200 180" role="img" aria-label="Baby Badger mascot">
+      <!-- ears -->
+      <circle cx="48" cy="52" r="20" fill="#2b2622"/>
+      <circle cx="152" cy="52" r="20" fill="#2b2622"/>
+      <circle cx="48" cy="52" r="10" fill="#f4b6a6"/>
+      <circle cx="152" cy="52" r="10" fill="#f4b6a6"/>
+      <!-- head -->
+      <ellipse cx="100" cy="100" rx="78" ry="68" fill="#d9d4cc"/>
+      <!-- dark eye bands -->
+      <path d="M40 70 Q70 60 82 100 Q76 140 50 140 Q28 120 40 70Z" fill="#2b2622"/>
+      <path d="M160 70 Q130 60 118 100 Q124 140 150 140 Q172 120 160 70Z" fill="#2b2622"/>
+      <!-- white stripe -->
+      <path d="M100 32 Q84 34 84 70 L88 128 Q100 140 112 128 L116 70 Q116 34 100 32Z" fill="#fffaf2"/>
+      <!-- eyes -->
+      <circle cx="64" cy="100" r="9" fill="#fffaf2"/>
+      <circle cx="136" cy="100" r="9" fill="#fffaf2"/>
+      <circle cx="66" cy="101" r="5" fill="#2b2622"/>
+      <circle cx="134" cy="101" r="5" fill="#2b2622"/>
+      <!-- cheeks -->
+      <circle cx="58" cy="132" r="7" fill="#f4b6a6" opacity=".8"/>
+      <circle cx="142" cy="132" r="7" fill="#f4b6a6" opacity=".8"/>
+      <!-- nose + mouth -->
+      <ellipse cx="100" cy="134" rx="11" ry="8" fill="#2b2622"/>
+      <path d="M92 148 Q100 156 108 148" stroke="#2b2622" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <p class="eyebrow">babybadger.shop</p>
+    <h1>Something little<br>is digging its way here.</h1>
+    <p class="lede">Baby Badger merch is almost ready. Leave your email and we'll let you know the moment the shop opens.</p>
+
+    <!-- Set the form action to your email provider's endpoint (e.g. Formspree, Buttondown, Mailchimp). -->
+    <form class="signup" action="#" method="POST" id="signup">
+      <label for="email" class="sr-only">Email address</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="note" id="note" aria-live="polite"></p>
+  </main>
+
+  <footer>© <span id="year"></span> Baby Badger</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('signup');
+    form.addEventListener('submit', async (e) => {
+      const note = document.getElementById('note');
+      if (form.getAttribute('action') === '#') {
+        e.preventDefault();
+        note.textContent = "Thanks! Sign-ups open very soon.";
+        return;
+      }
+      e.preventDefault();
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        note.textContent = res.ok ? "You're on the list! 🦡" : "Something went wrong — please try again.";
+        if (res.ok) form.reset();
+      } catch {
+        note.textContent = "Something went wrong — please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
