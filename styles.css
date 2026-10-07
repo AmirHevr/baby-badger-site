@@ -34,14 +34,6 @@ body {
 .badger {
   width: min(380px, 90vw);
   height: auto;
-  transform-origin: 50% 100%;
-  animation: breathe 4s ease-in-out infinite;
-}
-
-/* slow sleepy breathing */
-@keyframes breathe {
-  0%, 100% { transform: scale(1, 1); }
-  50% { transform: scale(1.012, 1.03); }
 }
 
 .eyebrow {
@@ -138,8 +130,4 @@ footer {
 @media (max-width: 420px) {
   .signup { flex-direction: column; border-radius: 20px; }
   .signup button { width: 100%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .badger { animation: none; }
 }
