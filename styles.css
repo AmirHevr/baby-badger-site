@@ -111,6 +111,21 @@ h1 {
 
 .note { min-height: 1.5em; margin: 14px 0 0; font-weight: 600; }
 
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s ease;
+}
+
+.social:hover, .social:focus-visible { background: rgba(43,38,34,.08); }
+
 footer {
   text-align: center;
   padding: 20px 16px;
