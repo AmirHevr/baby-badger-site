@@ -13,9 +13,7 @@ html, body { height: 100%; margin: 0; }
 body {
   display: flex;
   flex-direction: column;
-  background:
-    repeating-linear-gradient(135deg, transparent 0 28px, rgba(43,38,34,.035) 28px 56px),
-    var(--sand);
+  background: #fff;
   color: var(--ink);
   font-family: 'Nunito', system-ui, sans-serif;
   line-height: 1.5;
